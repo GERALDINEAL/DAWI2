@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Film</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-4">
+  <h1>Crear nueva Pelicula</h1>
+
+  <form action="#" th:action="@{/maintenance/create-confirm}" th:object="${filmCreateDto}" method="post">
+    <div class="form-group">
+      <label for="title">Titulo:</label>
+      <input type="text" th:field="*{title}" id="title" class="form-control" placeholder="Enter film title" required />
+    </div>
+
+    <div class="form-group">
+      <label for="description">Descripcion:</label>
+      <textarea th:field="*{description}" id="description" class="form-control" rows="1" placeholder="Enter film description" required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="releaseYear">Año de Lanzamiento:</label>
+      <input type="number" th:field="*{releaseYear}" id="releaseYear" class="form-control" placeholder="Enter release year" min="1900" max="2100" required />
+    </div>
+
+    <div class="form-group">
+      <label for="languageId">Lenguaje ID:</label>
+      <input type="number" th:field="*{languageId}" id="languageId" class="form-control" placeholder="Enter language ID" required />
+    </div>
+
+    <div class="form-group">
+      <label for="rentalDuration">Tiempo de Renta:</label>
+      <input type="number" th:field="*{rentalDuration}" id="rentalDuration" class="form-control" placeholder="Enter rental duration (in days)" required />
+    </div>
+
+    <div class="form-group">
+      <label for="rentalRate">Precio de Renta:</label>
+      <input type="number" step="0.01" th:field="*{rentalRate}" id="rentalRate" class="form-control" placeholder="Enter rental rate" required />
+    </div>
+
+    <div class="form-group">
+      <label for="length">Duracion:</label>
+      <input type="number" th:field="*{length}" id="length" class="form-control" placeholder="Enter film length (in minutes)" required />
+    </div>
+
+    <div class="form-group">
+      <label for="replacementCost">Replacement Cost:</label>
+      <input type="number" step="0.01" th:field="*{replacementCost}" id="replacementCost" class="form-control" placeholder="Enter replacement cost" required />
+    </div>
+
+    <div class="form-group">
+      <label for="rating">Clasificacion ID:</label>
+      <input type="text" th:field="*{rating}" id="rating" class="form-control" placeholder="Enter film rating" required />
+    </div>
+
+    <div class="form-group">
+      <label for="categoryId">Categoria ID:</label>
+      <input type="number" th:field="*{categoryId}" id="categoryId" class="form-control" placeholder="Enter category ID" required />
+    </div>
+
+    <div class="form-group">
+      <label for="specialFeatures">Special Features ID:</label>
+      <input type="text" th:field="*{specialFeatures}" id="specialFeatures" class="form-control" placeholder="Enter special features" />
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Crear Pelicula</button>
+      <a href="#" th:href="@{/maintenance/start}" class="btn btn-secondary">Cancel</a>
+    </div>
+
+    <div th:if="${errorMessage}" class="alert alert-danger">
+      <p th:text="${errorMessage}"></p>
+    </div>
+  </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
